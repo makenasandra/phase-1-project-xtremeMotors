@@ -21,7 +21,7 @@ Our Application is a Single Page Application that utilizes the `display: none` a
 2. Once in your directory git clone my repository from the GitHub link submitted.
 3. Navigate into the repository
 4. Run `json-server --watch db.json` to run the server.  Ensure you have json server installled globally. If not, run `npm install -g json-server` on your terminal to make the installation.
-5. If you prefer to run on cloud, you can use `npx son-server --watch db.json`
+5. If you prefer to run on cloud, you can use `npx json-server --watch db.json`
 6. Test your server by visiting this route in the browser:
 [http://localhost:3000/cars] 
 

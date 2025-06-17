@@ -13,7 +13,7 @@ const carSearchBarButton = document.getElementById("search-button");
 const enquireNowButton = document.getElementById("enquireBtn");
 const contactUsSendButton = document.getElementById("send-button");
 const contactUsForm = document.getElementById("contactus-form");
-const url = " http://localhost:3000";
+const url = "https://653c-41-90-179-58.ngrok-free.app";
 let carFilter;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchDataById() {
-  fetch(`${url}/Cars`)
+  // fetch(`${url}/Cars`)
+  fetch(`${url}/api/v1/cars/get-all-cars`, {
+    headers: new Headers({
+      "ngrok-skip-browser-warning": "69420",
+    })
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.status + "Item not found!");
@@ -31,7 +36,8 @@ function fetchDataById() {
     })
     .then((carInfo) => {
       // Display the fetched data
-      displayData(carInfo);
+      console.log(carInfo);
+      // displayData(carInfo);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -47,22 +53,22 @@ function displayData(carInfo) {
   carInventoryElement.innerHTML = "";
 
   // Display the fetched data in the element containers
-  for (let i = 0; i < carInfo.length; i++) {
-    console.log("Displaying Cars");
-    carInventoryElement.innerHTML += `<div class="Car1">
-    <img
-        id="car-image"
-        src=${carInfo[i].image}
-        alt= ${carInfo[i].make} ${carInfo[i].model} class="imgCar1"/>
-    <h3 id="car-make"> ${carInfo[i].make} </h3>
-    <h4 id="car-model">${carInfo[i].model}</h4>
-    <p id="car-price">${carInfo[i].price}</p>
-    <button id="enquireBtn" type="button" 
-    <a href="#contact"> Enquire Now</a>
+//   for (let i = 0; i < carInfo.length; i++) {
+//     console.log("Displaying Cars");
+//     carInventoryElement.innerHTML += `<div class="Car1">
+//     <img
+//         id="car-image"
+//         src=${carInfo[i].image}
+//         alt= ${carInfo[i].make} ${carInfo[i].model} class="imgCar1"/>
+//     <h3 id="car-make"> ${carInfo[i].make} </h3>
+//     <h4 id="car-model">${carInfo[i].model}</h4>
+//     <p id="car-price">${carInfo[i].price}</p>
+//     <button id="enquireBtn" type="button" 
+//     <a href="#contact"> Enquire Now</a>
        
-    </button>
-</div>`;
-  }
+//     </button>
+// </div>`;
+//   }
 }
 carSearchSelectTextElement.onclick = function () {
   carSearchListElement.classList.toggle("open");
